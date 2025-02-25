@@ -27,7 +27,7 @@ await onSent(prompt)
 {extended? <div className="recent">
     <p className='recent-title'>Recent chat</p>
     {
-      prevPrompts.map((item,index)=>{
+      prevPrompts.map((item)=>{
         return(
           
     <div onClick={()=>loadPrompt(item)} className="recent-entry">
