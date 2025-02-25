@@ -4,7 +4,7 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey: string | undefined = "AIzaSyAYDn3l3TtqWaEVxHK0HFEb30DkXm_zg2Y";
+const apiKey: string | undefined = "Enter Your Gemini ai api key";
 
 if (!apiKey) {
   throw new Error("GEMINI_API_KEY is not set in environment variables.");
