@@ -1,7 +1,5 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 
 const apiKey: string | undefined = "AIzaSyAYDn3l3TtqWaEVxHK0HFEb30DkXm_zg2Y";

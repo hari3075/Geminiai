@@ -12,8 +12,8 @@ type ContextType = {
     resultData: string;
     setInput: React.Dispatch<React.SetStateAction<string>>;
     input: string;
-    newChat: ()=>void;
-   
+    newChat: () => void;
+
 };
 
 export const Context = createContext<ContextType | null>(null);
@@ -26,7 +26,7 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [resultData, setResultData] = useState<string>("");
 
-    const newChat=()=>{
+    const newChat = () => {
         setLoading(false)
         setShowResult(false)
     }
@@ -35,42 +35,42 @@ const ContextProvider = ({ children }: { children: ReactNode }) => {
         setResultData("");
         setLoading(true);
         setShowResult(true);
-    
-        let finalPrompt = prompt || input.trim(); 
+
+        let finalPrompt = prompt || input.trim();
         if (!finalPrompt) {
             setLoading(false);
             return;
         }
-    
+
         setRecentPrompt(finalPrompt);
-    
+
         setPrevPrompts((prev) => {
             if (!prev.includes(finalPrompt)) {
                 return [...prev, finalPrompt];
             }
             return prev;
         });
-    
+
         const response = await runChat(finalPrompt);
-    
+
         let formattedResponse = response
             .split("**")
             .map((part, i) => (i % 2 === 1 ? `<b>${part}</b>` : part))
             .join("")
             .split("*")
             .join("<br>");
-    
+
         let words = formattedResponse.split(" ");
         words.forEach((word, i) => {
             setTimeout(() => {
                 setResultData((prev) => prev + word + " ");
             }, 75 * i);
         });
-    
+
         setLoading(false);
-        setInput(""); 
+        setInput("");
     };
-    
+
     const contextValue: ContextType = {
         prevPrompts,
         setPrevPrompts,

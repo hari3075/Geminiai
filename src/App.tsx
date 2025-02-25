@@ -4,8 +4,8 @@ import SideBar from "./components/sidebar/SideBar"
 const App = () => {
   return (
     <>
-<SideBar/>
-<Main/>
+      <SideBar />
+      <Main />
     </>
   )
 }
